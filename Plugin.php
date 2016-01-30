@@ -12,11 +12,11 @@ class Plugin extends Base
         $this->on('app.bootstrap', function($container) {
             Translator::load($container['config']->getCurrentLanguage(), __DIR__.'/Locale');
 
-            $this->eventManager->register(WebhookHandler::EVENT_COMMIT, t('Gitlab commit received'));
-            $this->eventManager->register(WebhookHandler::EVENT_ISSUE_OPENED, t('Gitlab issue opened'));
-            $this->eventManager->register(WebhookHandler::EVENT_ISSUE_CLOSED, t('Gitlab issue closed'));
-            $this->eventManager->register(WebhookHandler::EVENT_ISSUE_REOPENED, t('Gitlab issue reopened'));
-            $this->eventManager->register(WebhookHandler::EVENT_ISSUE_COMMENT, t('Gitlab issue comment created'));
+            $container['eventManager']->register(WebhookHandler::EVENT_COMMIT, t('Gitlab commit received'));
+            $container['eventManager']->register(WebhookHandler::EVENT_ISSUE_OPENED, t('Gitlab issue opened'));
+            $container['eventManager']->register(WebhookHandler::EVENT_ISSUE_CLOSED, t('Gitlab issue closed'));
+            $container['eventManager']->register(WebhookHandler::EVENT_ISSUE_REOPENED, t('Gitlab issue reopened'));
+            $container['eventManager']->register(WebhookHandler::EVENT_ISSUE_COMMENT, t('Gitlab issue comment created'));
         });
 
         $this->actionManager->getAction('\Kanboard\Action\CommentCreation')->addEvent(WebhookHandler::EVENT_ISSUE_COMMENT);
