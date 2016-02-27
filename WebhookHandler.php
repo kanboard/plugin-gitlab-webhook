@@ -162,7 +162,7 @@ class WebhookHandler extends Base
     {
         switch ($payload['object_attributes']['action']) {
             case 'open':
-                return $this->handleIssueOpened($payload['object_attributes']);
+                return $this->handleIssueOpened($payload['object_attributes'], $payload['project']);
             case 'close':
                 return $this->handleIssueClosed($payload['object_attributes']);
             case 'reopen':
@@ -177,15 +177,19 @@ class WebhookHandler extends Base
      *
      * @access public
      * @param  array    $issue   Issue data
+     * @param  array    $project Project info
      * @return boolean
      */
-    public function handleIssueOpened(array $issue)
+    public function handleIssueOpened(array $issue, array $project)
     {
+        $description = $this->processMessage($issue['description'], $project);
+        $description .= "\n\n[".t('Gitlab Issue').']('.$issue['url'].')';
+
         $event = array(
             'project_id' => $this->project_id,
             'reference' => $issue['id'],
             'title' => $issue['title'],
-            'description' => $issue['description']."\n\n[".t('Gitlab Issue').']('.$issue['url'].')',
+            'description' => $description,
         );
 
         $this->dispatcher->dispatch(
@@ -277,10 +281,13 @@ class WebhookHandler extends Base
                 $user = array();
             }
 
+            $comment = $this->processMessage($payload['object_attributes']['note'], $payload['project']);
+            $comment .= "\n\n[".t('By @%s on Gitlab', $payload['user']['username']).']('.$payload['object_attributes']['url'].')';
+
             $event = array(
                 'project_id' => $this->project_id,
                 'reference' => $payload['object_attributes']['id'],
-                'comment' => $payload['object_attributes']['note']."\n\n[".t('By @%s on Gitlab', $payload['user']['username']).']('.$payload['object_attributes']['url'].')',
+                'comment' => $comment,
                 'user_id' => ! empty($user) ? $user['id'] : 0,
                 'task_id' => $task['id'],
             );
@@ -294,5 +301,18 @@ class WebhookHandler extends Base
         }
 
         return false;
+    }
+
+    /**
+     * Post processing for message content
+     *
+     * @access public
+     * @param  string $message
+     * @param  array  $project
+     * @return string
+     */
+    public function processMessage($message, array $project)
+    {
+        return preg_replace('/\[(.*?)\]\((.+?)\)/', sprintf('[$1](%s$2)', $project['web_url']), $message);
     }
 }

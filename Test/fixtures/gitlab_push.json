@@ -7,38 +7,65 @@
     "message": null,
     "user_id": 74067,
     "user_name": "Fred",
-    "user_email": "f+gitlab@minicoders.com",
+    "user_email": "fred@kanboard.net",
+    "user_avatar": "https://secure.gravatar.com/avatar/8d560a797402bb854d986e4c8a1c7de9?s=80&d=identicon",
     "project_id": 320820,
-    "repository": {
+    "project": {
         "name": "test-webhook",
-        "url": "git@gitlab.com:minicoders/test-webhook.git",
         "description": "",
-        "homepage": "https://gitlab.com/minicoders/test-webhook",
-        "git_http_url": "https://gitlab.com/minicoders/test-webhook.git",
-        "git_ssh_url": "git@gitlab.com:minicoders/test-webhook.git",
-        "visibility_level": 0
+        "web_url": "https://gitlab.com/kanboard/test-webhook",
+        "avatar_url": null,
+        "git_ssh_url": "git@gitlab.com:kanboard/test-webhook.git",
+        "git_http_url": "https://gitlab.com/kanboard/test-webhook.git",
+        "namespace": "kanboard",
+        "visibility_level": 0,
+        "path_with_namespace": "kanboard/test-webhook",
+        "default_branch": "master",
+        "homepage": "https://gitlab.com/kanboard/test-webhook",
+        "url": "git@gitlab.com:kanboard/test-webhook.git",
+        "ssh_url": "git@gitlab.com:kanboard/test-webhook.git",
+        "http_url": "https://gitlab.com/kanboard/test-webhook.git"
     },
     "commits": [
         {
             "id": "48aafa75eef9ad253aa254b0c82c987a52ebea78",
             "message": "Fix bug #2",
             "timestamp": "2015-06-21T00:41:41+00:00",
-            "url": "https://gitlab.com/minicoders/test-webhook/commit/48aafa75eef9ad253aa254b0c82c987a52ebea78",
+            "url": "https://gitlab.com/kanboard/test-webhook/commit/48aafa75eef9ad253aa254b0c82c987a52ebea78",
             "author": {
                 "name": "Fred",
-                "email": "me@localhost"
-            }
+                "email": "f+gitlab@minicoders.com"
+            },
+            "added": [],
+            "modified": [
+                "test"
+            ],
+            "removed": []
         },
         {
             "id": "e4ec6156d208a45fc546fae73c28300b5af1692a",
             "message": "test",
             "timestamp": "2015-06-21T00:35:55+00:00",
-            "url": "https://gitlab.com/localhost/test-webhook/commit/e4ec6156d208a45fc546fae73c28300b5af1692a",
+            "url": "https://gitlab.com/kanboard/test-webhook/commit/e4ec6156d208a45fc546fae73c28300b5af1692a",
             "author": {
                 "name": "Fred",
-                "email": "me@localhost"
-            }
+                "email": "f+gitlab@minicoders.com"
+            },
+            "added": [
+                "test"
+            ],
+            "modified": [],
+            "removed": []
         }
     ],
-    "total_commits_count": 2
+    "total_commits_count": 2,
+    "repository": {
+        "name": "test-webhook",
+        "url": "git@gitlab.com:kanboard/test-webhook.git",
+        "description": "",
+        "homepage": "https://gitlab.com/kanboard/test-webhook",
+        "git_http_url": "https://gitlab.com/kanboard/test-webhook.git",
+        "git_ssh_url": "git@gitlab.com:kanboard/test-webhook.git",
+        "visibility_level": 0
+    }
 }

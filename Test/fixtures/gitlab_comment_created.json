@@ -2,45 +2,65 @@
     "object_kind": "note",
     "user": {
         "name": "Fred",
-        "username": "minicoders",
-        "avatar_url": "https://secure.gravatar.com/avatar/3c44936e5a56f80711bff14987d2733f?s=40&d=identicon"
+        "username": "kanboard",
+        "avatar_url": "https://secure.gravatar.com/avatar/8d560a797402bb854d986e4c8a1c7de9?s=80&d=identicon"
     },
     "project_id": 320820,
-    "repository": {
+    "project": {
         "name": "test-webhook",
-        "url": "git@gitlab.com:minicoders/test-webhook.git",
         "description": "",
-        "homepage": "https://gitlab.com/minicoders/test-webhook"
+        "web_url": "https://gitlab.com/kanboard/test-webhook",
+        "avatar_url": null,
+        "git_ssh_url": "git@gitlab.com:kanboard/test-webhook.git",
+        "git_http_url": "https://gitlab.com/kanboard/test-webhook.git",
+        "namespace": "kanboard",
+        "visibility_level": 0,
+        "path_with_namespace": "kanboard/test-webhook",
+        "default_branch": "master",
+        "homepage": "https://gitlab.com/kanboard/test-webhook",
+        "url": "git@gitlab.com:kanboard/test-webhook.git",
+        "ssh_url": "git@gitlab.com:kanboard/test-webhook.git",
+        "http_url": "https://gitlab.com/kanboard/test-webhook.git"
     },
     "object_attributes": {
-        "id": 1642761,
-        "note": "Super comment!",
+        "id": 3972168,
+        "note": "Super comment! ![My image 1](/uploads/1a4d374af5ba51d8246b589f8932de66/img1.jpg)",
         "noteable_type": "Issue",
         "author_id": 74067,
-        "created_at": "2015-07-17 21:37:48 UTC",
-        "updated_at": "2015-07-17 21:37:48 UTC",
+        "created_at": "2016-02-27 02:17:44 UTC",
+        "updated_at": "2016-02-27 02:17:44 UTC",
         "project_id": 320820,
         "attachment": null,
         "line_code": null,
         "commit_id": "",
-        "noteable_id": 355691,
+        "noteable_id": 1268888,
         "st_diff": null,
         "system": false,
-        "url": "https://gitlab.com/minicoders/test-webhook/issues/1#note_1642761"
+        "updated_by_id": null,
+        "is_award": false,
+        "url": "https://gitlab.com/kanboard/test-webhook/issues/5#note_3972168"
+    },
+    "repository": {
+        "name": "test-webhook",
+        "url": "git@gitlab.com:kanboard/test-webhook.git",
+        "description": "",
+        "homepage": "https://gitlab.com/kanboard/test-webhook"
     },
     "issue": {
-        "id": 355691,
-        "title": "Bug",
+        "id": 1268888,
+        "title": "patate",
         "assignee_id": null,
         "author_id": 74067,
         "project_id": 320820,
-        "created_at": "2015-07-17 21:31:47 UTC",
-        "updated_at": "2015-07-17 21:37:48 UTC",
+        "created_at": "2016-02-27 01:10:01 UTC",
+        "updated_at": "2016-02-27 02:17:44 UTC",
         "position": 0,
         "branch_name": null,
         "description": "There is a bug somewhere.\r\n\r\nBye",
         "milestone_id": null,
         "state": "opened",
-        "iid": 1
+        "iid": 5,
+        "updated_by_id": null,
+        "weight": null
     }
 }
