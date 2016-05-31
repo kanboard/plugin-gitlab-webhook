@@ -2,7 +2,7 @@
 
 namespace Kanboard\Plugin\GitlabWebhook\Controller;
 
-use Kanboard\Controller\Base;
+use Kanboard\Controller\BaseController;
 use Kanboard\Plugin\GitlabWebhook\WebhookHandler;
 
 /**
@@ -11,7 +11,7 @@ use Kanboard\Plugin\GitlabWebhook\WebhookHandler;
  * @package  controller
  * @author   Frederic Guillot
  */
-class Webhook extends Base
+class WebhookController extends BaseController
 {
     /**
      * Handle Gitlab webhooks
@@ -26,6 +26,6 @@ class Webhook extends Base
         $gitlabWebhook->setProjectId($this->request->getIntegerParam('project_id'));
         $result = $gitlabWebhook->parsePayload($this->request->getJson());
 
-        echo $result ? 'PARSED' : 'IGNORED';
+        $this->response->text($result ? 'PARSED' : 'IGNORED');
     }
 }

@@ -2,12 +2,13 @@
 
 require_once 'tests/units/Base.php';
 
+use Kanboard\Event\GenericEvent;
 use Kanboard\Plugin\GitlabWebhook\WebhookHandler;
-use Kanboard\Model\TaskCreation;
-use Kanboard\Model\TaskFinder;
-use Kanboard\Model\Project;
-use Kanboard\Model\ProjectUserRole;
-use Kanboard\Model\User;
+use Kanboard\Model\TaskCreationModel;
+use Kanboard\Model\TaskFinderModel;
+use Kanboard\Model\ProjectModel;
+use Kanboard\Model\ProjectUserRoleModel;
+use Kanboard\Model\UserModel;
 use Kanboard\Core\Security\Role;
 
 class WebhookHandlerTest extends Base
@@ -44,9 +45,9 @@ class WebhookHandlerTest extends Base
     public function testHandleCommit()
     {
         $g = new WebhookHandler($this->container);
-        $p = new Project($this->container);
-        $tc = new TaskCreation($this->container);
-        $tf = new TaskFinder($this->container);
+        $p = new ProjectModel($this->container);
+        $tc = new TaskCreationModel($this->container);
+        $tf = new TaskFinderModel($this->container);
 
         $this->assertEquals(1, $p->create(array('name' => 'test')));
         $g->setProjectId(1);
@@ -87,9 +88,9 @@ class WebhookHandlerTest extends Base
     public function testHandleIssueReopened()
     {
         $g = new WebhookHandler($this->container);
-        $p = new Project($this->container);
-        $tc = new TaskCreation($this->container);
-        $tf = new TaskFinder($this->container);
+        $p = new ProjectModel($this->container);
+        $tc = new TaskCreationModel($this->container);
+        $tf = new TaskFinderModel($this->container);
 
         $this->assertEquals(1, $p->create(array('name' => 'test')));
         $g->setProjectId(1);
@@ -116,9 +117,9 @@ class WebhookHandlerTest extends Base
     public function testHandleIssueClosed()
     {
         $g = new WebhookHandler($this->container);
-        $p = new Project($this->container);
-        $tc = new TaskCreation($this->container);
-        $tf = new TaskFinder($this->container);
+        $p = new ProjectModel($this->container);
+        $tc = new TaskCreationModel($this->container);
+        $tf = new TaskFinderModel($this->container);
 
         $this->assertEquals(1, $p->create(array('name' => 'test')));
         $g->setProjectId(1);
@@ -151,10 +152,10 @@ class WebhookHandlerTest extends Base
     {
         $this->container['dispatcher']->addListener(WebhookHandler::EVENT_ISSUE_COMMENT, array($this, 'onCommentCreatedWithNoUser'));
 
-        $p = new Project($this->container);
+        $p = new ProjectModel($this->container);
         $this->assertEquals(1, $p->create(array('name' => 'foobar')));
 
-        $tc = new TaskCreation($this->container);
+        $tc = new TaskCreationModel($this->container);
         $this->assertEquals(1, $tc->create(array('title' => 'boo', 'reference' => 1268888, 'project_id' => 1)));
 
         $g = new WebhookHandler($this->container);
@@ -169,13 +170,13 @@ class WebhookHandlerTest extends Base
     {
         $this->container['dispatcher']->addListener(WebhookHandler::EVENT_ISSUE_COMMENT, array($this, 'onCommentCreatedWithNotMember'));
 
-        $p = new Project($this->container);
+        $p = new ProjectModel($this->container);
         $this->assertEquals(1, $p->create(array('name' => 'foobar')));
 
-        $tc = new TaskCreation($this->container);
+        $tc = new TaskCreationModel($this->container);
         $this->assertEquals(1, $tc->create(array('title' => 'boo', 'reference' => 1268888, 'project_id' => 1)));
 
-        $u = new User($this->container);
+        $u = new UserModel($this->container);
         $this->assertEquals(2, $u->create(array('username' => 'kanboard')));
 
         $g = new WebhookHandler($this->container);
@@ -190,16 +191,16 @@ class WebhookHandlerTest extends Base
     {
         $this->container['dispatcher']->addListener(WebhookHandler::EVENT_ISSUE_COMMENT, array($this, 'onCommentCreatedWithUser'));
 
-        $p = new Project($this->container);
+        $p = new ProjectModel($this->container);
         $this->assertEquals(1, $p->create(array('name' => 'foobar')));
 
-        $tc = new TaskCreation($this->container);
+        $tc = new TaskCreationModel($this->container);
         $this->assertEquals(1, $tc->create(array('title' => 'boo', 'reference' => 1268888, 'project_id' => 1)));
 
-        $u = new User($this->container);
+        $u = new UserModel($this->container);
         $this->assertEquals(2, $u->create(array('username' => 'kanboard')));
 
-        $pp = new ProjectUserRole($this->container);
+        $pp = new ProjectUserRoleModel($this->container);
         $this->assertTrue($pp->addUser(1, 2, Role::PROJECT_MEMBER));
 
         $g = new WebhookHandler($this->container);
@@ -210,7 +211,7 @@ class WebhookHandlerTest extends Base
         ));
     }
 
-    public function onOpen($event)
+    public function onOpen(GenericEvent $event)
     {
         $data = $event->getAll();
         $this->assertEquals(1, $data['project_id']);
@@ -219,14 +220,14 @@ class WebhookHandlerTest extends Base
         $this->assertEquals("There is a bug somewhere.\r\n\r\n![My image 1](https://gitlab.com/kanboard/test-webhook/uploads/1a4d374af5ba51d8246b589f8932de66/img1.jpg)\n\n[Gitlab Issue](https://gitlab.com/kanboard/test-webhook/issues/5)", $data['description']);
     }
 
-    public function onReopen($event)
+    public function onReopen(GenericEvent $event)
     {
         $data = $event->getAll();
         $this->assertEquals(1, $data['project_id']);
         $this->assertEquals(1, $data['task_id']);
         $this->assertEquals(1268888, $data['reference']);
     }
-    public function onClose($event)
+    public function onClose(GenericEvent $event)
     {
         $data = $event->getAll();
         $this->assertEquals(1, $data['project_id']);
@@ -234,7 +235,7 @@ class WebhookHandlerTest extends Base
         $this->assertEquals(1268888, $data['reference']);
     }
 
-    public function onCommit($event)
+    public function onCommit(GenericEvent $event)
     {
         $data = $event->getAll();
         $this->assertEquals(1, $data['project_id']);
@@ -245,7 +246,7 @@ class WebhookHandlerTest extends Base
         $this->assertEquals('https://gitlab.com/kanboard/test-webhook/commit/48aafa75eef9ad253aa254b0c82c987a52ebea78', $data['commit_url']);
     }
 
-    public function onCommentCreatedWithNoUser($event)
+    public function onCommentCreatedWithNoUser(GenericEvent $event)
     {
         $data = $event->getAll();
         $this->assertEquals(1, $data['project_id']);
@@ -255,7 +256,7 @@ class WebhookHandlerTest extends Base
         $this->assertEquals("Super comment! ![My image 1](https://gitlab.com/kanboard/test-webhook/uploads/1a4d374af5ba51d8246b589f8932de66/img1.jpg)\n\n[By @kanboard on Gitlab](https://gitlab.com/kanboard/test-webhook/issues/5#note_3972168)", $data['comment']);
     }
 
-    public function onCommentCreatedWithNotMember($event)
+    public function onCommentCreatedWithNotMember(GenericEvent $event)
     {
         $data = $event->getAll();
         $this->assertEquals(1, $data['project_id']);
@@ -265,7 +266,7 @@ class WebhookHandlerTest extends Base
         $this->assertEquals("Super comment! ![My image 1](https://gitlab.com/kanboard/test-webhook/uploads/1a4d374af5ba51d8246b589f8932de66/img1.jpg)\n\n[By @kanboard on Gitlab](https://gitlab.com/kanboard/test-webhook/issues/5#note_3972168)", $data['comment']);
     }
 
-    public function onCommentCreatedWithUser($event)
+    public function onCommentCreatedWithUser(GenericEvent $event)
     {
         $data = $event->getAll();
         $this->assertEquals(1, $data['project_id']);

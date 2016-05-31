@@ -122,13 +122,13 @@ class WebhookHandler extends Base
      */
     public function handleCommit(array $commit)
     {
-        $task_id = $this->task->getTaskIdFromText($commit['message']);
+        $task_id = $this->taskModel->getTaskIdFromText($commit['message']);
 
         if (empty($task_id)) {
             return false;
         }
 
-        $task = $this->taskFinder->getById($task_id);
+        $task = $this->taskFinderModel->getById($task_id);
 
         if (empty($task)) {
             return false;
@@ -209,7 +209,7 @@ class WebhookHandler extends Base
      */
     public function handleIssueReopened(array $issue)
     {
-        $task = $this->taskFinder->getByReference($this->project_id, $issue['id']);
+        $task = $this->taskFinderModel->getByReference($this->project_id, $issue['id']);
 
         if (! empty($task)) {
             $event = array(
@@ -239,7 +239,7 @@ class WebhookHandler extends Base
      */
     public function handleIssueClosed(array $issue)
     {
-        $task = $this->taskFinder->getByReference($this->project_id, $issue['id']);
+        $task = $this->taskFinderModel->getByReference($this->project_id, $issue['id']);
 
         if (! empty($task)) {
             $event = array(
@@ -272,12 +272,12 @@ class WebhookHandler extends Base
             return false;
         }
 
-        $task = $this->taskFinder->getByReference($this->project_id, $payload['issue']['id']);
+        $task = $this->taskFinderModel->getByReference($this->project_id, $payload['issue']['id']);
 
         if (! empty($task)) {
-            $user = $this->user->getByUsername($payload['user']['username']);
+            $user = $this->userModel->getByUsername($payload['user']['username']);
 
-            if (! empty($user) && ! $this->projectPermission->isAssignable($this->project_id, $user['id'])) {
+            if (! empty($user) && ! $this->projectPermissionModel->isAssignable($this->project_id, $user['id'])) {
                 $user = array();
             }
 

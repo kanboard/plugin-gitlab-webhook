@@ -14,17 +14,19 @@ Author
 Requirements
 ------------
 
+- Kanboard >= 1.0.29
 - Gitlab webhooks configured for a project
 
 Installation
 ------------
 
-- Decompress the archive in the `plugins` folder
+You have the choice between 3 methods:
 
-or
+1. Install the plugin from the Kanboard plugin manager in one click
+2. Download the zip file and decompress everything under the directory `plugins/GitlabWebhook`
+3. Clone this repository into the folder `plugins/GitlabWebhook`
 
-- Create a folder **plugins/GitlabWebhook**
-- Copy all files under this directory
+Note: Plugin folder is case-sensitive.
 
 Documentation
 -------------

@@ -18,12 +18,12 @@ class Plugin extends Base
 
         $this->template->hook->attach('template:project:integrations', 'GitlabWebhook:project/integrations');
 
-        $this->route->addRoute('/webhook/gitlab/:project_id/:token', 'webhook', 'handler', 'GitlabWebhook');
+        $this->route->addRoute('/webhook/gitlab/:project_id/:token', 'WebhookController', 'handler', 'GitlabWebhook');
     }
 
     public function onStartup()
     {
-        Translator::load($this->language->getCurrentLanguage(), __DIR__.'/Locale');
+        Translator::load($this->languageModel->getCurrentLanguage(), __DIR__.'/Locale');
 
         $this->eventManager->register(WebhookHandler::EVENT_COMMIT, t('Gitlab commit received'));
         $this->eventManager->register(WebhookHandler::EVENT_ISSUE_OPENED, t('Gitlab issue opened'));
@@ -49,7 +49,7 @@ class Plugin extends Base
 
     public function getPluginVersion()
     {
-        return '1.0.3';
+        return '1.0.4';
     }
 
     public function getPluginHomepage()
