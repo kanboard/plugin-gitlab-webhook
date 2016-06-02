@@ -3,6 +3,7 @@
 namespace Kanboard\Plugin\GitlabWebhook;
 
 use Kanboard\Core\Plugin\Base;
+use Kanboard\Core\Security\Role;
 use Kanboard\Core\Translator;
 
 class Plugin extends Base
@@ -17,8 +18,8 @@ class Plugin extends Base
         $this->actionManager->getAction('\Kanboard\Action\TaskOpen')->addEvent(WebhookHandler::EVENT_ISSUE_REOPENED);
 
         $this->template->hook->attach('template:project:integrations', 'GitlabWebhook:project/integrations');
-
         $this->route->addRoute('/webhook/gitlab/:project_id/:token', 'WebhookController', 'handler', 'GitlabWebhook');
+        $this->applicationAccessMap->add('WebhookController', 'handler', Role::APP_PUBLIC);
     }
 
     public function onStartup()
