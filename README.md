@@ -48,7 +48,7 @@ Gitlab events can be connected to Kanboard automatic actions.
 
 ### Configuration
 
-![Gitlab configuration](http://kanboard.net/screenshots/documentation/gitlab-webhooks.png)
+![Gitlab configuration](https://cloud.githubusercontent.com/assets/323546/20451679/47cc19b8-adca-11e6-86b2-fe4d377f41d6.png)
 
 1. On Kanboard, go to the project settings and choose the section **Integrations**
 2. Copy the Gitlab webhook url

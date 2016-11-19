@@ -11,7 +11,7 @@ php:
 env:
   global:
     - PLUGIN=GitlabWebhook
-    - KANBOARD_REPO=https://github.com/fguillot/kanboard.git
+    - KANBOARD_REPO=https://github.com/kanboard/kanboard.git
   matrix:
     - DB=sqlite
     - DB=mysql
