@@ -1,13 +1,13 @@
 <?php
 
 return array(
-    // 'By @%s on Gitlab' => '',
-    // 'Gitlab issue comment created' => '',
-    // 'Gitlab issue reopened' => '',
-    // 'Gitlab commit received' => '',
-    // 'Gitlab issue opened' => '',
-    // 'Gitlab issue closed' => '',
-    // 'Gitlab webhooks' => '',
-    // 'Help on Gitlab webhooks' => '',
+    // 'By @%s on GitLab' => '',
+    // 'GitLab issue comment created' => '',
+    // 'GitLab issue reopened' => '',
+    // 'GitLab commit received' => '',
+    // 'GitLab issue opened' => '',
+    // 'GitLab issue closed' => '',
+    // 'GitLab webhooks' => '',
+    // 'Help on GitLab webhooks' => '',
 );
 

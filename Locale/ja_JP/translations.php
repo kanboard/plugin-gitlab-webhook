@@ -1,13 +1,13 @@
 <?php
 
 return array(
-    // 'By @%s on Gitlab' => '',
-    // 'Gitlab issue comment created' => '',
-    // 'Gitlab issue reopened' => '',
-    'Gitlab commit received' => 'Gitlab コミットを受診しました',
-    'Gitlab issue opened' => 'Gitlab Issue がオープンされました',
-    'Gitlab issue closed' => 'Gitlab Issue がクローズされました',
-    'Gitlab webhooks' => 'Gitlab Webhooks',
-    'Help on Gitlab webhooks' => 'Gitlab Webhooks のヘルプ',
+    // 'By @%s on GitLab' => '',
+    // 'GitLab issue comment created' => '',
+    // 'GitLab issue reopened' => '',
+    'GitLab commit received' => 'GitLab コミットを受診しました',
+    'GitLab issue opened' => 'GitLab Issue がオープンされました',
+    'GitLab issue closed' => 'GitLab Issue がクローズされました',
+    'GitLab webhooks' => 'GitLab Webhooks',
+    'Help on GitLab webhooks' => 'GitLab Webhooks のヘルプ',
 );
 

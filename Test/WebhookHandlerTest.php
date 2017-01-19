@@ -217,7 +217,7 @@ class WebhookHandlerTest extends Base
         $this->assertEquals(1, $data['project_id']);
         $this->assertEquals(1268888, $data['reference']);
         $this->assertEquals('Bug', $data['title']);
-        $this->assertEquals("There is a bug somewhere.\r\n\r\n![My image 1](https://gitlab.com/kanboard/test-webhook/uploads/1a4d374af5ba51d8246b589f8932de66/img1.jpg)\n\n[Gitlab Issue](https://gitlab.com/kanboard/test-webhook/issues/5)", $data['description']);
+        $this->assertEquals("There is a bug somewhere.\r\n\r\n![My image 1](https://gitlab.com/kanboard/test-webhook/uploads/1a4d374af5ba51d8246b589f8932de66/img1.jpg)\n\n[GitLab Issue](https://gitlab.com/kanboard/test-webhook/issues/5)", $data['description']);
     }
 
     public function onReopen(GenericEvent $event)
@@ -241,7 +241,7 @@ class WebhookHandlerTest extends Base
         $this->assertEquals(1, $data['project_id']);
         $this->assertEquals(2, $data['task_id']);
         $this->assertEquals('test2', $data['title']);
-        $this->assertEquals("Fix bug #2\n\n[Commit made by @Fred on Gitlab](https://gitlab.com/kanboard/test-webhook/commit/48aafa75eef9ad253aa254b0c82c987a52ebea78)", $data['comment']);
+        $this->assertEquals("Fix bug #2\n\n[Commit made by @Fred on GitLab](https://gitlab.com/kanboard/test-webhook/commit/48aafa75eef9ad253aa254b0c82c987a52ebea78)", $data['comment']);
         $this->assertEquals("Fix bug #2", $data['commit_message']);
         $this->assertEquals('https://gitlab.com/kanboard/test-webhook/commit/48aafa75eef9ad253aa254b0c82c987a52ebea78', $data['commit_url']);
     }
@@ -253,7 +253,7 @@ class WebhookHandlerTest extends Base
         $this->assertEquals(1, $data['task_id']);
         $this->assertEquals(0, $data['user_id']);
         $this->assertEquals(3972168, $data['reference']);
-        $this->assertEquals("Super comment! ![My image 1](https://gitlab.com/kanboard/test-webhook/uploads/1a4d374af5ba51d8246b589f8932de66/img1.jpg)\n\n[By @kanboard on Gitlab](https://gitlab.com/kanboard/test-webhook/issues/5#note_3972168)", $data['comment']);
+        $this->assertEquals("Super comment! ![My image 1](https://gitlab.com/kanboard/test-webhook/uploads/1a4d374af5ba51d8246b589f8932de66/img1.jpg)\n\n[By @kanboard on GitLab](https://gitlab.com/kanboard/test-webhook/issues/5#note_3972168)", $data['comment']);
     }
 
     public function onCommentCreatedWithNotMember(GenericEvent $event)
@@ -263,7 +263,7 @@ class WebhookHandlerTest extends Base
         $this->assertEquals(1, $data['task_id']);
         $this->assertEquals(0, $data['user_id']);
         $this->assertEquals(3972168, $data['reference']);
-        $this->assertEquals("Super comment! ![My image 1](https://gitlab.com/kanboard/test-webhook/uploads/1a4d374af5ba51d8246b589f8932de66/img1.jpg)\n\n[By @kanboard on Gitlab](https://gitlab.com/kanboard/test-webhook/issues/5#note_3972168)", $data['comment']);
+        $this->assertEquals("Super comment! ![My image 1](https://gitlab.com/kanboard/test-webhook/uploads/1a4d374af5ba51d8246b589f8932de66/img1.jpg)\n\n[By @kanboard on GitLab](https://gitlab.com/kanboard/test-webhook/issues/5#note_3972168)", $data['comment']);
     }
 
     public function onCommentCreatedWithUser(GenericEvent $event)
@@ -273,6 +273,6 @@ class WebhookHandlerTest extends Base
         $this->assertEquals(1, $data['task_id']);
         $this->assertEquals(2, $data['user_id']);
         $this->assertEquals(3972168, $data['reference']);
-        $this->assertEquals("Super comment! ![My image 1](https://gitlab.com/kanboard/test-webhook/uploads/1a4d374af5ba51d8246b589f8932de66/img1.jpg)\n\n[By @kanboard on Gitlab](https://gitlab.com/kanboard/test-webhook/issues/5#note_3972168)", $data['comment']);
+        $this->assertEquals("Super comment! ![My image 1](https://gitlab.com/kanboard/test-webhook/uploads/1a4d374af5ba51d8246b589f8932de66/img1.jpg)\n\n[By @kanboard on GitLab](https://gitlab.com/kanboard/test-webhook/issues/5#note_3972168)", $data['comment']);
     }
 }

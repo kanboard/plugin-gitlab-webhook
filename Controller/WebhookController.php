@@ -14,7 +14,7 @@ use Kanboard\Plugin\GitlabWebhook\WebhookHandler;
 class WebhookController extends BaseController
 {
     /**
-     * Handle Gitlab webhooks
+     * Handle GitLab webhooks
      *
      * @access public
      */

@@ -1,13 +1,13 @@
 <?php
 
 return array(
-    // 'By @%s on Gitlab' => '',
-    // 'Gitlab issue comment created' => '',
-    // 'Gitlab issue reopened' => '',
-    'Gitlab commit received' => '收到 Gitlab 提交',
-    'Gitlab issue opened' => '开启 Gitlab 问题',
-    'Gitlab issue closed' => '关闭 Gitlab 问题',
-    'Gitlab webhooks' => 'Gitlab 网络钩子',
-    'Help on Gitlab webhooks' => 'Gitlab 网络钩子帮助',
+    // 'By @%s on GitLab' => '',
+    // 'GitLab issue comment created' => '',
+    // 'GitLab issue reopened' => '',
+    'GitLab commit received' => '收到 GitLab 提交',
+    'GitLab issue opened' => '开启 GitLab 问题',
+    'GitLab issue closed' => '关闭 GitLab 问题',
+    'GitLab webhooks' => 'GitLab 网络钩子',
+    'Help on GitLab webhooks' => 'GitLab 网络钩子帮助',
 );
 

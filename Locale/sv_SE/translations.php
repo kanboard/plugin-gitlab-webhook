@@ -1,13 +1,13 @@
 <?php
 
 return array(
-    'By @%s on Gitlab' => 'Av @%s på Gitlab',
-    'Gitlab issue comment created' => 'Gitlab frågekommentar skapad',
-    // 'Gitlab issue reopened' => '',
-    'Gitlab commit received' => 'Gitlab bidrag mottaget',
-    'Gitlab issue opened' => 'Gitlab fråga öppnad',
-    'Gitlab issue closed' => 'Gitlab fråga stängd',
-    'Gitlab webhooks' => 'Gitlab webhooks',
-    'Help on Gitlab webhooks' => 'Hjälp för Gitlab webhooks',
+    'By @%s on GitLab' => 'Av @%s på GitLab',
+    'GitLab issue comment created' => 'GitLab frågekommentar skapad',
+    // 'GitLab issue reopened' => '',
+    'GitLab commit received' => 'GitLab bidrag mottaget',
+    'GitLab issue opened' => 'GitLab fråga öppnad',
+    'GitLab issue closed' => 'GitLab fråga stängd',
+    'GitLab webhooks' => 'GitLab webhooks',
+    'Help on GitLab webhooks' => 'Hjälp för GitLab webhooks',
 );
 
