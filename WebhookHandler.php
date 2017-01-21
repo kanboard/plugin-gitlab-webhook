@@ -6,7 +6,7 @@ use Kanboard\Core\Base;
 use Kanboard\Event\GenericEvent;
 
 /**
- * Gitlab Webhook
+ * GitLab Webhook
  *
  * @author   Frederic Guillot
  */
@@ -55,7 +55,7 @@ class WebhookHandler extends Base
      * Parse events
      *
      * @access public
-     * @param  array   $payload   Gitlab event
+     * @param  array   $payload   GitLab event
      * @return boolean
      */
     public function parsePayload(array $payload)
@@ -76,7 +76,7 @@ class WebhookHandler extends Base
      * Get event type
      *
      * @access public
-     * @param  array   $payload   Gitlab event
+     * @param  array   $payload   GitLab event
      * @return string
      */
     public function getType(array $payload)
@@ -101,7 +101,7 @@ class WebhookHandler extends Base
      * Parse push event
      *
      * @access public
-     * @param  array   $payload   Gitlab event
+     * @param  array   $payload   GitLab event
      * @return boolean
      */
     public function handlePushEvent(array $payload)
@@ -117,7 +117,7 @@ class WebhookHandler extends Base
      * Parse commit
      *
      * @access public
-     * @param  array   $commit   Gitlab commit
+     * @param  array   $commit   GitLab commit
      * @return boolean
      */
     public function handleCommit(array $commit)
@@ -144,7 +144,7 @@ class WebhookHandler extends Base
                 'task_id' => $task_id,
                 'commit_message' => $commit['message'],
                 'commit_url' => $commit['url'],
-                'comment' => $commit['message']."\n\n[".t('Commit made by @%s on Gitlab', $commit['author']['name']).']('.$commit['url'].')'
+                'comment' => $commit['message']."\n\n[".t('Commit made by @%s on GitLab', $commit['author']['name']).']('.$commit['url'].')'
             ) + $task)
         );
 
@@ -155,7 +155,7 @@ class WebhookHandler extends Base
      * Parse issue event
      *
      * @access public
-     * @param  array   $payload   Gitlab event
+     * @param  array   $payload   GitLab event
      * @return boolean
      */
     public function handleIssueEvent(array $payload)
@@ -183,7 +183,7 @@ class WebhookHandler extends Base
     public function handleIssueOpened(array $issue, array $project)
     {
         $description = $this->processMessage($issue['description'], $project);
-        $description .= "\n\n[".t('Gitlab Issue').']('.$issue['url'].')';
+        $description .= "\n\n[".t('GitLab Issue').']('.$issue['url'].')';
 
         $event = array(
             'project_id' => $this->project_id,
@@ -282,7 +282,7 @@ class WebhookHandler extends Base
             }
 
             $comment = $this->processMessage($payload['object_attributes']['note'], $payload['project']);
-            $comment .= "\n\n[".t('By @%s on Gitlab', $payload['user']['username']).']('.$payload['object_attributes']['url'].')';
+            $comment .= "\n\n[".t('By @%s on GitLab', $payload['user']['username']).']('.$payload['object_attributes']['url'].')';
 
             $event = array(
                 'project_id' => $this->project_id,

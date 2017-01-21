@@ -26,21 +26,21 @@ class Plugin extends Base
     {
         Translator::load($this->languageModel->getCurrentLanguage(), __DIR__.'/Locale');
 
-        $this->eventManager->register(WebhookHandler::EVENT_COMMIT, t('Gitlab commit received'));
-        $this->eventManager->register(WebhookHandler::EVENT_ISSUE_OPENED, t('Gitlab issue opened'));
-        $this->eventManager->register(WebhookHandler::EVENT_ISSUE_CLOSED, t('Gitlab issue closed'));
-        $this->eventManager->register(WebhookHandler::EVENT_ISSUE_REOPENED, t('Gitlab issue reopened'));
-        $this->eventManager->register(WebhookHandler::EVENT_ISSUE_COMMENT, t('Gitlab issue comment created'));
+        $this->eventManager->register(WebhookHandler::EVENT_COMMIT, t('GitLab commit received'));
+        $this->eventManager->register(WebhookHandler::EVENT_ISSUE_OPENED, t('GitLab issue opened'));
+        $this->eventManager->register(WebhookHandler::EVENT_ISSUE_CLOSED, t('GitLab issue closed'));
+        $this->eventManager->register(WebhookHandler::EVENT_ISSUE_REOPENED, t('GitLab issue reopened'));
+        $this->eventManager->register(WebhookHandler::EVENT_ISSUE_COMMENT, t('GitLab issue comment created'));
     }
 
     public function getPluginName()
     {
-        return 'Gitlab Webhook';
+        return 'GitLab Webhook';
     }
 
     public function getPluginDescription()
     {
-        return t('Bind Gitlab webhook events to Kanboard automatic actions');
+        return t('Bind GitLab webhook events to Kanboard automatic actions');
     }
 
     public function getPluginAuthor()

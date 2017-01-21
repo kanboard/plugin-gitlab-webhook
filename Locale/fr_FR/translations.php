@@ -1,14 +1,14 @@
 <?php
 
 return array(
-    'By @%s on Gitlab' => 'Par @%s sur Gitlab',
-    'Gitlab issue comment created' => 'Commentaire créé sur un ticket Gitlab',
-    'Gitlab issue reopened' => 'Ticket Gitlab rouvert',
-    'Gitlab commit received' => 'Commit reçu via Gitlab',
-    'Gitlab issue opened' => 'Ouverture d\'un ticket sur Gitlab',
-    'Gitlab issue closed' => 'Fermeture d\'un ticket sur Gitlab',
-    'Gitlab webhooks' => 'Webhook Gitlab',
-    'Help on Gitlab webhooks' => 'Aide sur les webhooks Gitlab',
-    'Bind Gitlab webhook events to Kanboard automatic actions' => 'Connecte les événements de Gitlab aux actions automatiques de Kanboard',
+    'By @%s on GitLab' => 'Par @%s sur GitLab',
+    'GitLab issue comment created' => 'Commentaire créé sur un ticket GitLab',
+    'GitLab issue reopened' => 'Ticket GitLab rouvert',
+    'GitLab commit received' => 'Commit reçu via GitLab',
+    'GitLab issue opened' => 'Ouverture d\'un ticket sur GitLab',
+    'GitLab issue closed' => 'Fermeture d\'un ticket sur GitLab',
+    'GitLab webhooks' => 'Webhook GitLab',
+    'Help on GitLab webhooks' => 'Aide sur les webhooks GitLab',
+    'Bind GitLab webhook events to Kanboard automatic actions' => 'Connecte les événements de GitLab aux actions automatiques de Kanboard',
 );
 
