@@ -1,13 +1,13 @@
 <?php
 
 return array(
-    // 'By @%s on GitLab' => '',
-    // 'GitLab issue comment created' => '',
-    // 'GitLab issue reopened' => '',
-    'GitLab commit received' => 'GitLab commit érkezett',
-    'GitLab issue opened' => 'GitLab issue nyitás',
-    'GitLab issue closed' => 'GitLab issue zárás',
-    'GitLab webhooks' => 'GitLab webhooks',
-    'Help on GitLab webhooks' => 'GitLab webhooks súgó',
+    'By @%s on GitLab' => '@%s által a Gitlabon',
+    'GitLab issue comment created' => 'Gitlab probléma megjegyzés létrehozva',
+    'GitLab issue reopened' => 'Gitlab probléma újranyitva',
+    'GitLab commit received' => 'GitLab kommit érkezett',
+    'GitLab issue opened' => 'GitLab probléma megnyitva',
+    'GitLab issue closed' => 'GitLab probléma lezárva',
+    'GitLab webhooks' => 'GitLab webhorgok',
+    'Help on GitLab webhooks' => 'Súgó a GitLab webhorgokhoz',
 );
 
