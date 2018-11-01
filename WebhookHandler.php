@@ -190,6 +190,8 @@ class WebhookHandler extends Base
             'reference' => $issue['id'],
             'title' => $issue['title'],
             'description' => $description,
+            'assignee_id' => $issue['assignee_id'],
+            'author_id' => $issue['author_id'],
         );
 
         $this->dispatcher->dispatch(
@@ -216,6 +218,8 @@ class WebhookHandler extends Base
                 'project_id' => $this->project_id,
                 'task_id' => $task['id'],
                 'reference' => $issue['id'],
+                'assignee_id' => $issue['assignee_id'],
+                'author_id' => $issue['author_id'],
             );
 
             $this->dispatcher->dispatch(
@@ -246,6 +250,8 @@ class WebhookHandler extends Base
                 'project_id' => $this->project_id,
                 'task_id' => $task['id'],
                 'reference' => $issue['id'],
+                'assignee_id' => $issue['assignee_id'],
+                'author_id' => $issue['author_id'],
             );
 
             $this->dispatcher->dispatch(
