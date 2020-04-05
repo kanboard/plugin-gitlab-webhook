@@ -1,8 +1,6 @@
 Gitlab Webhook
 ==============
 
-[![Build Status](https://travis-ci.org/kanboard/plugin-gitlab-webhook.svg?branch=master)](https://travis-ci.org/kanboard/plugin-gitlab-webhook)
-
 Bind Gitlab webhook events to Kanboard automatic actions.
 
 Author
